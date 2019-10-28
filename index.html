@@ -3,18 +3,28 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>layout 后台大布局 - Layui</title>
+    <title>菜品评价系统</title>
     <link rel="stylesheet" href="layui/css/layui.css">
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
-        <div class="layui-logo">layui 后台布局</div>
+        <div class="layui-logo">菜品评价系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">控制台</a></li>
-            <li class="layui-nav-item"><a href="">商品管理</a></li>
-            <li class="layui-nav-item"><a href="">用户</a></li>
+            <li class="layui-nav-item"><a href="">菜品</a></li>
+            <li class="layui-nav-item"><a href="">我的点评</a></li>
+            <li class="layui-nav-item"><a href="">在线交流</a></li>
+            <li class="layui-nav-item">
+                <div class="demoTable">
+                    菜品搜索：
+                    <div class="layui-inline">
+                        <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+                    </div>
+                    <button class="layui-btn" data-type="reload">搜索</button>
+                </div>
+            </li>
+            <!--<li class="layui-nav-item"><a href="">用户</a></li>
             <li class="layui-nav-item">
                 <a href="javascript:;">其它系统</a>
                 <dl class="layui-nav-child">
@@ -22,26 +32,27 @@
                     <dd><a href="">消息管理</a></dd>
                     <dd><a href="">授权管理</a></dd>
                 </dl>
-            </li>
+            </li>-->
         </ul>
+
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
                     <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
                     贤心
                 </a>
-                <dl class="layui-nav-child">
+               <!-- <dl class="layui-nav-child">
                     <dd><a href="">基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>
-                </dl>
+                </dl>-->
             </li>
-            <li class="layui-nav-item"><a href="">退了</a></li>
+            <li class="layui-nav-item"><a href="127.0.0.1:3535/user/loginOut">退出登录</a></li>
         </ul>
     </div>
 
-    <div class="layui-side layui-bg-black">
+    <!--<div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
-            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            &lt;!&ndash; 左侧导航区域（可配合layui已有的垂直导航） &ndash;&gt;
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">所有商品</a>
@@ -64,7 +75,7 @@
                 <li class="layui-nav-item"><a href="">发布商品</a></li>
             </ul>
         </div>
-    </div>
+    </div>-->
 
     <div class="layui-body">
         <!-- 内容主体区域 -->
