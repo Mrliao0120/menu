@@ -1,7 +1,7 @@
 //后台菜品首页
 var queryPageByCondition=moviesUrl+"/menuEvaluateBackground/queryPageByCondition";
 //var queryLocalHostImage=moviesUrl+"/util/queryLocalHostImage";
-
+var queryMenuEvaluateDetail=moviesUrl+"/menuEvaluateBackground/queryMenuEvaluateDetail";
 
 
 var user=localStorage.getItem("BackgroundToken");
@@ -33,10 +33,10 @@ layui.use('table', function()
         cols: [[
             {field:'id', width:100, title: 'ID', sort: false},
             {field:'menuName', width:180, title: '菜品名称'},
-            {field:'menuEvaluate', width:180, title: '菜品评价'},
-            {field:'menuEvaluateScore', width:100, title: '菜品分数'},
+            {field:'menuEvaluate', width:200, title: '菜品评价'},
+            {field:'menuEvaluateScore', width:100, title: '菜品评分'},
             {field:'menuType', width:100, title: '回复类型', templet:function (data) {
-                    var  value= data.menuType!=null?data.menuType==1?"普通回复":"商家回复":"无";
+                    var  value= data.menuType!=null?data.menuType==1?"普通评价":"商家回复":"无";
                     return  value
                 }},
             {field:'isDelete', width:100, title: '是否删除', templet:function (data) {
@@ -98,10 +98,10 @@ function deleteMenu(ids) {
 };
 */
 
-/*function  queryId(ids) {
+function  queryId(ids) {
     var  id={id:ids};
     $.ajax({
-        url:queryById,
+        url:queryMenuEvaluateDetail,
         type:"POST",
         data:id,
         dataType:"json",
@@ -110,8 +110,8 @@ function deleteMenu(ids) {
             if (data.code==200){
                 if (data.data!=null){
                     //sessionStorage.setItem("menuData",data.data);
-                    localStorage.setItem("menuData",JSON.stringify(data.data));
-                    window.location.href="../background/updateMenu.html";
+                    localStorage.setItem("menuEvaluateDetail",JSON.stringify(data.data));
+                    window.location.href="../background/updateMenuEvaluate.html";
                 }else {
                     alert(data.msg);
                 }
@@ -120,7 +120,7 @@ function deleteMenu(ids) {
             }
         }
     })
-}*/
+}
 
 
 

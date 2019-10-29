@@ -61,11 +61,17 @@
     <div class="layui-body">
         <fieldset class="layui-elem-field " style="margin-top: 30px;">
         </fieldset>
-        <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
-            <a href="addMenu.html"><button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal">新增菜品</button></a>
-            <!--<a href="insertAtlas.html"><button type="button" class="layui-btn">新增菜品</button></a>-->
-
+        <div class="site-demo-button">
+            <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                <a href="addMenu.html"><button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal">新增菜品</button></a>
+                菜品搜索:
+                <div class="layui-inline">
+                    <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="getInfo" id="searchMenu">搜索</button>
+            </div>
         </div>
+
 
         <script type="text/html" id="barDemo">
             <button class="layui-btn layui-btn-sm layui-btn-radius"  lay-event="detail">查看/更新</button>
@@ -74,7 +80,7 @@
         </script>
 
         <!-- 内容主体区域 -->
-        <table class="layui-hide" id="table-menu-data" lay-filter="demo"></table>
+        <table class="layui-hide" id="table-menu-data"  lay-filter="demo"></table>
     </div>
 
     <div class="layui-footer">

@@ -9,6 +9,7 @@ layui.use('table', function()
 {
     var table = layui.table;
     table.render({
+        id:'LAY-app-message-all',
         elem: '#table-menu-data',
         url:queryMenuAe,
         method:'POST',
@@ -73,6 +74,40 @@ layui.use('table', function()
         }
         if (obj.event === 'delete'){
             deleteMenu(data.id);
+        }
+    });
+
+
+
+    $('#searchMenu').on('click',function(){
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+    });
+    // 点击获取数据
+    var  active = {
+        getInfo: function () {
+            var orderId=$('#demoReload').val();
+            if (orderId) {
+                var index = layer.msg('查询中，请稍候...',{icon: 16,time:false,shade:0});
+                setTimeout(function(){
+                    table.reload('LAY-app-message-all', { //表格的id
+                        url:queryMenuAe,
+                        where: {
+                            'menuName':$.trim(orderId)
+                        }
+                    });
+                    layer.close(index);
+                },800);
+            } else {
+                layer.msg("请输入菜品名称");
+            }
+        },
+    };
+    //监听回车事件,扫描枪一扫描或者按下回车键就直接执行查询
+    $("#select_orderId").bind("keyup", function (e) {
+        if (e.keyCode == 13) {
+            var type = "getInfo";
+            active[type] ? active[type].call(this) : '';
         }
     });
 
