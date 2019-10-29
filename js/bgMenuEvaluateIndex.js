@@ -11,6 +11,7 @@ layui.use('table', function()
 {
     var table = layui.table;
     table.render({
+        id:'menuEvaluatePage',
         elem: '#table-menu-data',
         url:queryPageByCondition,
         method:'POST',
@@ -71,6 +72,37 @@ layui.use('table', function()
         }
     });
 
+    $('#searchMenu').on('click',function(){
+        var type = $(this).data('type');
+        active[type] ? active[type].call(this) : '';
+    });
+    // 点击获取数据
+    var  active = {
+        getInfo: function () {
+            var orderId=$('#demoReload').val();
+            if (orderId) {
+                var index = layer.msg('查询中，请稍候...',{icon: 16,time:false,shade:0});
+                setTimeout(function(){
+                    table.reload('menuEvaluatePage', { //表格的id
+                        url:queryPageByCondition,
+                        where: {
+                            'menuName':$.trim(orderId)
+                        }
+                    });
+                    layer.close(index);
+                },800);
+            } else {
+                window.location.reload();
+            }
+        },
+    };
+    //监听回车事件,扫描枪一扫描或者按下回车键就直接执行查询
+    $("#select_orderId").bind("keyup", function (e) {
+        if (e.keyCode == 13) {
+            var type = "getInfo";
+            active[type] ? active[type].call(this) : '';
+        }
+    });
 });
 
 /*

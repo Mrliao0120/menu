@@ -99,7 +99,7 @@ layui.use('table', function()
                     layer.close(index);
                 },800);
             } else {
-                layer.msg("请输入菜品名称");
+                window.location.reload();
             }
         },
     };
