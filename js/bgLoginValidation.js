@@ -19,8 +19,13 @@ $(document).ready(function (){
             success:function (data,status,request) {
                 if (data.code==200){
                     if (data.data!=null){
-                      var userName=localStorage.getItem("username");
-                      $("#userName").html(userName);
+                      var bgNickName=sessionStorage.getItem("bgnickname");
+                      if(bgNickName!=null){
+                          $("#userName").html(bgNickName);
+                      } else {
+                          var userName=localStorage.getItem("username");
+                          $("#userName").html(userName);
+                      }
                     }else {
                         window.location.href="../background/backgroundLogin.html";
                     }

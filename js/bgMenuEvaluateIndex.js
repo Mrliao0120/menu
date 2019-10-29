@@ -2,7 +2,7 @@
 var queryPageByCondition=moviesUrl+"/menuEvaluateBackground/queryPageByCondition";
 //var queryLocalHostImage=moviesUrl+"/util/queryLocalHostImage";
 var queryMenuEvaluateDetail=moviesUrl+"/menuEvaluateBackground/queryMenuEvaluateDetail";
-
+var updateMenuEvaluate=moviesUrl+"/menuEvaluateBackground/updateMenuEvaluate";
 
 var user=localStorage.getItem("BackgroundToken");
 
@@ -105,11 +105,11 @@ layui.use('table', function()
     });
 });
 
-/*
+
 function deleteMenu(ids) {
     var  deleteData={"id":ids,"isDelete":1};
     $.ajax({
-        url:updateMenuAe,
+        url:updateMenuEvaluate,
         type:"POST",
         contentType:"application/json",
         data:JSON.stringify(deleteData),
@@ -128,7 +128,7 @@ function deleteMenu(ids) {
         }
     })
 };
-*/
+
 
 function  queryId(ids) {
     var  id={id:ids};

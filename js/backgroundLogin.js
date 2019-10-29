@@ -28,6 +28,7 @@ function login() {
                     var token=request.getResponseHeader("BackgroundToken");
                     localStorage.setItem("BackgroundToken",token);
                     localStorage.setItem("username",data.data.username);
+                    sessionStorage.setItem("bgnickname",data.data.nickname);
                     window.location.href="../background/index.html";
                 }else {
                     alert(data.msg);
