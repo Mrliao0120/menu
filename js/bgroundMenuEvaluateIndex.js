@@ -1,16 +1,18 @@
 //后台菜品首页
-var queryMenuAe=moviesUrl+"/menuAeBackground/queryMenuAe";
-var queryLocalHostImage=moviesUrl+"/util/queryLocalHostImage";
-var queryById=moviesUrl+"/menuAeBackground/queryById";
+var queryPageByCondition=moviesUrl+"/menuEvaluateBackground/queryPageByCondition";
+//var queryLocalHostImage=moviesUrl+"/util/queryLocalHostImage";
+
+
+
 var user=localStorage.getItem("BackgroundToken");
 
-var updateMenuAe=moviesUrl+"/menuAeBackground/updateMenuAe";
+
 layui.use('table', function()
 {
     var table = layui.table;
     table.render({
         elem: '#table-menu-data',
-        url:queryMenuAe,
+        url:queryPageByCondition,
         method:'POST',
         contentType: 'application/json' ,
         //设置分页参数
@@ -31,19 +33,12 @@ layui.use('table', function()
         cols: [[
             {field:'id', width:100, title: 'ID', sort: false},
             {field:'menuName', width:180, title: '菜品名称'},
-            {field:'menuImage', width:150, title: '菜品图片', templet:function (data) {
-                    if (data.menuImage!=null){
-                        return  "<div><img class=\"layui-upload-img\" src='"+queryLocalHostImage+"?pathName="+data.menuImage+"' width=\"300px\"/></div>";
-                    }else {
-                        return "暂无";
-                    }
-                }
-            },
-            {field:'menuPrice', width:100, title: '菜品单价'},
-            {field:'menuText', title: '菜品详细', width: 100},
-            {field:'menuFloor', title: '菜品楼层', width: 100},
-            {field:'menuWindow', title: '菜品窗口', width: 100},
-            {field:'canteenName', width:100, title: '食堂', sort: false},
+            {field:'menuEvaluate', width:180, title: '菜品评价'},
+            {field:'menuEvaluateScore', width:100, title: '菜品分数'},
+            {field:'menuType', width:100, title: '回复类型', templet:function (data) {
+                    var  value= data.menuType!=null?data.menuType==1?"普通回复":"商家回复":"无";
+                    return  value
+                }},
             {field:'isDelete', width:100, title: '是否删除', templet:function (data) {
                     var  value= data.isDelete!=null?data.isDelete==1?"是":"否":"否";
                     return  value
@@ -78,6 +73,7 @@ layui.use('table', function()
 
 });
 
+/*
 function deleteMenu(ids) {
     var  deleteData={"id":ids,"isDelete":1};
     $.ajax({
@@ -100,8 +96,9 @@ function deleteMenu(ids) {
         }
     })
 };
+*/
 
-function  queryId(ids) {
+/*function  queryId(ids) {
     var  id={id:ids};
     $.ajax({
         url:queryById,
@@ -123,7 +120,7 @@ function  queryId(ids) {
             }
         }
     })
-}
+}*/
 
 
 

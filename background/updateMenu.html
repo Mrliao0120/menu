@@ -29,16 +29,10 @@
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
-                <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
-                </a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">基本资料</a></dd>
-                    <dd><a href="">安全设置</a></dd>
-                </dl>
+                <span id="userName" class="layui-nav-item"></span>
             </li>
-            <li class="layui-nav-item"><a href="">退出登录</a></li>
+            <li class="layui-nav-item"><a href="updatePassWord.html">修改密码</a></li>
+            <li class="layui-nav-item"><a href="backgroundLogin.html">退出登录</a></li>
         </ul>
     </div>
 
@@ -115,7 +109,7 @@
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="updateMenu()">立即提交</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
             </div>
         </div>
 
@@ -127,7 +121,7 @@
     </div>
 </div>
 <script src="../layui/layui.js"></script>
-<script src="../js/updateMenu.js"></script>
+<script src="../js/bgUpdateMenu.js"></script>
 </body>
 </html>
 

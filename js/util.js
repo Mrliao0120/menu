@@ -2,6 +2,7 @@
 window.moviesUrl="//127.0.0.1:3535";
 
 
+
 function   formatDate(now)   {
     let datetime = new Date();
     datetime.setTime(now);
