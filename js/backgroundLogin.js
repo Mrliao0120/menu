@@ -1,4 +1,4 @@
-var  loginUrl=moviesUrl+"/account/login"
+var  loginUrl=moviesUrl+"/account/login";
 
 
 
@@ -24,8 +24,9 @@ function login() {
         success:function (data,status,request) {
             if (data.code==200){
                 if (data.data!=null){
-                    var token=request.getResponseHeader("token");
-                    localStorage.setItem("token",token);
+                    var token=request.getResponseHeader("BackgroundToken");
+                    localStorage.setItem("BackgroundToken",token);
+                    localStorage.setItem("username",data.data.username);
                     window.location.href="../background/index.html";
                 }else {
                     alert(data.msg);
