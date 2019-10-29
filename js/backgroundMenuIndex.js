@@ -86,7 +86,7 @@ function  queryId(ids) {
             if (data.code==200){
                 if (data.data!=null){
                     //sessionStorage.setItem("menuData",data.data);
-                    localStorage.setItem("menuData",data.data);
+                    localStorage.setItem("menuData",JSON.stringify(data.data));
                     window.location.href="../background/updateMenu.html";
                 }else {
                     alert(data.msg);
