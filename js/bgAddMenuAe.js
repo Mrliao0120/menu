@@ -1,4 +1,4 @@
-
+//添加菜品
 var uploadFile=moviesUrl+"/util/uploadFile";
 var queryLocalHostImage=moviesUrl+"/util/queryLocalHostImage";
 

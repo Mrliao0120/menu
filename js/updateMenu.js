@@ -1,3 +1,4 @@
+//查看详情 以及更新ajax
 var  id=null;
 var queryLocalHostImage=moviesUrl+"/util/queryLocalHostImage";
 

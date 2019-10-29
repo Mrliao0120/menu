@@ -1,3 +1,4 @@
+//后台登录
 var  loginUrl=moviesUrl+"/account/login";
 
 

@@ -1,3 +1,4 @@
+//后台菜品首页
 var queryMenuAe=moviesUrl+"/menuAeBackground/queryMenuAe";
 var queryLocalHostImage=moviesUrl+"/util/queryLocalHostImage";
 var queryById=moviesUrl+"/menuAeBackground/queryById";

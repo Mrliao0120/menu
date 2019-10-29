@@ -1,6 +1,7 @@
+////后台登录验证
 var   queryToken=moviesUrl+"/account/queryToken";
 
-//后台登录验证
+
 $(document).ready(function (){
    //登录效验
     var user=localStorage.getItem("BackgroundToken");
