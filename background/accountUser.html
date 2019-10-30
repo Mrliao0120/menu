@@ -59,25 +59,28 @@
     </div>
 
     <div class="layui-body">
-        <fieldset class="layui-elem-field " style="margin-top: 30px;">
-        </fieldset>
-        <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
-            菜品搜索:
-            <div class="layui-inline">
-                <input class="layui-input" name="id" id="demoReload" autocomplete="off">
+        <fieldset class="layui-elem-field " style="margin-top: 30px;"></fieldset>
+        <div class="site-demo-button">
+            <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+                <a href="addAccount.html"><button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal">新增用户</button></a>
+                用户搜索:
+                <div class="layui-inline">
+                    <input class="layui-input" name="id" id="demoReload" placeholder="请输入账号或昵称" autocomplete="off">
+                </div>
+                <button class="layui-btn" data-type="getInfo" id="searchMenu">搜索</button>
             </div>
-            <button class="layui-btn" data-type="getInfo" id="searchMenu">搜索</button>
-
         </div>
 
+
         <script type="text/html" id="barDemo">
-            <button class="layui-btn layui-btn-sm layui-btn-radius"  lay-event="detail">查看/回复</button>
-            <button data-method="offset" data-type="auto" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger" lay-event="delete">删除评论</button>
-            <!--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
+            <button data-method="offset" data-type="auto" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger" lay-event="delete">删除</button>
+            <!--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                <button class="layui-btn layui-btn-sm layui-btn-radius"  lay-event="detail">查看/修改</button>
+            -->
         </script>
 
         <!-- 内容主体区域 -->
-        <table class="layui-hide" id="table-menu-data" lay-filter="demo"></table>
+        <table class="layui-hide" id="table-menu-data"  lay-filter="demo"></table>
     </div>
 
     <div class="layui-footer">
@@ -86,7 +89,6 @@
     </div>
 </div>
 <script src="../layui/layui.js"></script>
-<script src="../js/bgMenuEvaluateIndex.js"></script>
-<script src="../js/bgAddMenuAe.js"></script>
+<script src="../js/bgAccountUserIndex.js"></script>
 </body>
 </html>
