@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/util.js"></script>
+    <style>
+        body{
+            background: url("wbjs/centeen.jpg") no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div style="position: absolute; left:46%; top:240px;">
+    <h2>食堂菜品系统登录</h2>
+    <div class="layui-form-item">
+    </div>
+</div>
+<div style="position: absolute; left:40%; top:280px;">
+    <div class="layui-form-item">
+        <label class="layui-form-label">账号:</label>
+        <div class="layui-input-inline">
+            <input type="text" id="username" name="title" required  lay-verify="required" placeholder="请输入账号" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码:</label>
+        <div class="layui-input-inline">
+            <input type="password" id="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+        </div>
+        <!--<div class="layui-form-mid layui-word-aux">辅助文字</div>-->
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn layui-bg-blue" lay-submit lay-filter="" onclick="wbLogin()">登录</button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-bg-orange" onclick="LoginReset()">重置</button>
+        </div>
+    </div>
+
+</div>
+
+
+<script>
+    function LoginReset() {
+        window.location.reload();
+    }
+</script>
+<script src="layui/layui.js"></script>
+<script src="wbjs/login.js"></script>
+
+<script>
+
+</script>
+
+</body>
+</html>
