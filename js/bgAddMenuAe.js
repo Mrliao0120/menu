@@ -75,7 +75,7 @@ function addMenuAe() {
         success:function (data) {
             if (data.code==200){
                 alert("添加成功");
-                    window.location.href="../background/addMenu.html";
+                    window.location.href="../background/menuIndex.html";
             }else {
                 alert(data.msg);
             }

@@ -19,6 +19,17 @@ $(document).ready(function (){
             success:function (data,status,request) {
                 if (data.code==200){
                     if (data.data!=null){
+                       var systemLevel=localStorage.getItem("systemLevel");
+                        if(systemLevel!=null&&systemLevel==1){
+                            var htmls="<li class=\"layui-nav-item layui-nav-itemed\" id=\"userMenu\">\n" +
+                                "                    <a href=\"javascript:;\">用户相关</a>\n" +
+                                "                    <dl class=\"layui-nav-child\">\n" +
+                                "                        <dd><a href=\"userAccount.html\">管理员列表</a></dd>\n" +
+                                "                        <dd><a href=\"accountUser.html\">用户列表</a></dd>\n" +
+                                "                    </dl>\n" +
+                                "                </li>";
+                            $("#addUserMenu").append(htmls);
+                        }
                       var bgNickName=sessionStorage.getItem("bgnickname");
                       if(bgNickName!=null){
                           $("#userName").html(bgNickName);

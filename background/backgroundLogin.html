@@ -5,15 +5,22 @@
     <title>登录</title>
     <link rel="stylesheet" href="../layui/css/layui.css">
     <script src="../js/jquery-3.4.1.min.js"></script>
+    <style>
+        body{
+            background: url("images/centeen.jpg") no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+    </style>
 </head>
-<body background="images/centeen.jpg">
+<body>
 
-<div style="position: relative; left:44%; top:240px;">
+<div style="position: absolute; left:44%; top:240px;">
     <h2>食堂菜品后台管理系统登录</h2>
     <div class="layui-form-item">
     </div>
 </div>
-<div style="position: relative; left:40%; top:250px;">
+<div style="position: absolute; left:40%; top:280px;">
 
     <div class="layui-form-item">
         <label class="layui-form-label">账号:</label>
@@ -32,14 +39,18 @@
     <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn layui-bg-blue" lay-submit lay-filter="" onclick="login()">登录</button>
-            <button type="reset" class="layui-btn layui-btn-primary layui-bg-orange">重置</button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-bg-orange" onclick="LoginReset()">重置</button>
         </div>
     </div>
 
 </div>
 
 
-
+<script>
+    function LoginReset() {
+        window.location.reload();
+    }
+</script>
 <script src="../layui/layui.js"></script>
 <script src="../js/util.js"></script>
 <script src="../js/backgroundLogin.js"></script>

@@ -25,6 +25,7 @@ function login() {
         success:function (data,status,request) {
             if (data.code==200){
                 if (data.data!=null){
+                    localStorage.setItem("systemLevel",data.data.systemLevel);
                     var token=request.getResponseHeader("BackgroundToken");
                     localStorage.setItem("BackgroundToken",token);
                     localStorage.setItem("username",data.data.username);

@@ -50,7 +50,7 @@ layui.use('table', function()
                     return  value
                 }},
             {field:'gmtCreate', width:200, title: '创建日期'
-                // ,templet : function (data) {return formatDate(data.gmtCreate);}
+                 ,templet : function (data) {return formatDate(data.gmtCreate);}
                     },
             {fixed: 'right', width: 300, title:'操作',align:'center', toolbar: '#barDemo'}
         ]],
