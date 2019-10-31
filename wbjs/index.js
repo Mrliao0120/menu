@@ -1,7 +1,7 @@
 var  queryByPageCondition=moviesUrl+"/menu/queryByPageCondition";
 var queryLocalHostImage=moviesUrl+"/util/queryLocalHostImage";
 
-
+var queryById=moviesUrl+"/menu/queryById";
 
 
 
@@ -35,13 +35,12 @@ layui.use('table', function()
             ,curr: 1 //设定初始在第 5 页
             ,groups: 3 //只显示 1 个连续页码
         },
-        headers:{"BackgroundToken":user},
         cols: [[
             {field:'id', width:100, title: 'ID', sort: false,hide:true},
             {field:'menuName', width:180, title: '菜品名称'},
             {field:'menuImage', title: '菜品图片', templet:function (data) {
                     if (data.menuImage!=null){
-                        return  "<div><img class=\"layui-upload-img\"  src='"+queryLocalHostImage+"?pathName="+data.menuImage+"' width=\"300px\"/></div>";
+                        return  "<div><img class=\"layui-upload-img\"  src='"+queryLocalHostImage+"?pathName="+data.menuImage+"' /></div>";
                     }else {
                         return "暂无";
                     }
@@ -52,16 +51,14 @@ layui.use('table', function()
             {field:'menuFloor', title: '菜品楼层', width: 100},
             {field:'menuWindow', title: '菜品窗口', width: 100},
             {field:'canteenName', width:100, title: '食堂', sort: false},
-            {field:'gmtCreate', width:200, title: '创建日期'
-                ,templet : function (data) {return formatDate(data.gmtCreate);}
-            },
-            {field:'menuEvaluateScore', title: '评分', width: 100,templet:function (data) {
+            {field:'menuEvaluateScore', title: '平均得分', width: 100,templet:function (data) {
                     if (data.menuEvaluateScore!=null){
                         return  data.menuEvaluateScore;
                     }else {
                         return "暂无";
                     }
                 }},
+            {field: 'right', width: 300, title:'操作',align:'center', toolbar: '#barDemo'}
         ]],
 
         //格式化数据
@@ -76,18 +73,15 @@ layui.use('table', function()
     });
 
 
-    /*table.on('tool(demo)', function(obj){
+    table.on('tool(demo)', function(obj){
         var data = obj.data;
         if(obj.event === 'detail'){
-            queryId(data.id);
+            queryMenuEvalueateId(data.id);
         }
-        if (obj.event === 'delete'){
+        /*if (obj.event === 'delete'){
             deleteMenu(data.id);
-        }
-    });*/
-
-
-
+        }*/
+    });
    $('#searchMenu').on('click',function(){
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
@@ -121,3 +115,27 @@ layui.use('table', function()
     });
 
 });
+
+function  queryMenuEvalueateId(ids) {
+    var  id={id:ids};
+    $.ajax({
+        url:queryById,
+        type:"POST",
+        data:id,
+        dataType:"json",
+        timeout:3000,
+        success:function (data) {
+            if (data.code==200){
+                if (data.data!=null){
+                    //sessionStorage.setItem("menuData",data.data);
+                    localStorage.setItem("menuEvaluateDetailIndex",JSON.stringify(data.data));
+                    window.location.href="../background/updateMenuEvaluate.html";
+                }else {
+                    alert(data.msg);
+                }
+            }else {
+                alert(data.msg);
+            }
+        }
+    });
+}
