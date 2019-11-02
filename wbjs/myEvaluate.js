@@ -1,19 +1,17 @@
-var  queryByPageCondition=moviesUrl+"/menu/queryByPageCondition";
+var user=localStorage.getItem("webToken");
+
 var queryLocalHostImage=moviesUrl+"/util/queryLocalHostImage";
 
+var queryMyEvaluate=moviesUrl+"/menuEvaluate/queryMyEvaluate";
 var queryByAndIndexId=moviesUrl+"/menu/queryByAndIndexId";
-
-
-
-
 layui.use('table', function()
 {
     var table = layui.table;
     var user=localStorage.getItem("webToken");
     table.render({
-        id:'wbIndex',
+        id:'evaluateId',
         elem: '#table-menu-data',
-        url:queryByPageCondition,
+        url:queryMyEvaluate,
         method:'POST',
         headers: {
             "token" : user
@@ -36,7 +34,7 @@ layui.use('table', function()
             ,groups: 3 //只显示 1 个连续页码
         },
         cols: [[
-            {field:'id', width:100, title: 'ID', sort: false,hide:true},
+            {field:'menuId', width:100, title: 'id', sort: false,hide:true},
             {field:'menuName', width:180, title: '菜品名称'},
             {field:'menuImage', title: '菜品图片', templet:function (data) {
                     if (data.menuImage!=null){
@@ -46,18 +44,8 @@ layui.use('table', function()
                     }
                 }
             },
-            {field:'menuPrice', width:100, title: '菜品单价'},
-            {field:'menuText', title: '菜品详细', width: '20%'},
-            {field:'menuFloor', title: '菜品楼层', width: 100},
-            {field:'menuWindow', title: '菜品窗口', width: 100},
-            {field:'canteenName', width:100, title: '食堂', sort: false},
-            {field:'menuEvaluateScore', title: '平均得分', width: 100,templet:function (data) {
-                    if (data.menuEvaluateScore!=null){
-                        return  data.menuEvaluateScore;
-                    }else {
-                        return "暂无";
-                    }
-                }},
+            {field:'menuEvaluate', width:100, title: '菜品评价'},
+            {field:'menuEvaluateScore', title: '菜品评分', width: '20%'},
             {field: 'right', width: 300, title:'操作',align:'center', toolbar: '#barDemo'}
         ]],
 
@@ -82,7 +70,7 @@ layui.use('table', function()
             deleteMenu(data.id);
         }*/
     });
-   $('#searchMenu').on('click',function(){
+    $('#searchMenu').on('click',function(){
         var type = $(this).data('type');
         active[type] ? active[type].call(this) : '';
     });
@@ -93,8 +81,8 @@ layui.use('table', function()
             if (orderId) {
                 var index = layer.msg('查询中，请稍候...',{icon: 16,time:false,shade:0});
                 setTimeout(function(){
-                    table.reload('wbIndex', { //表格的id
-                        url:queryByPageCondition,
+                    table.reload('evaluateId', { //表格的id
+                        url:queryMyEvaluate,
                         where: {
                             'menuName':$.trim(orderId)
                         }
@@ -116,6 +104,7 @@ layui.use('table', function()
 
 });
 
+
 function  queryMenuEvalueateId(ids) {
     var user=localStorage.getItem("webToken");
     var  id={id:ids};
@@ -133,7 +122,7 @@ function  queryMenuEvalueateId(ids) {
                 if (data.data!=null){
                     //sessionStorage.setItem("menuData",data.data);
                     localStorage.setItem("menuEvaluateDetailIndex",JSON.stringify(data.data));
-                    window.location.href="./menuAndEvaluateDetail.html";
+                    window.location.href="menuAndEvaluateDetail.html";
                 }else {
                     alert(data.msg);
                 }
@@ -143,3 +132,5 @@ function  queryMenuEvalueateId(ids) {
         }
     });
 }
+
+
