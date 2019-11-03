@@ -8,9 +8,9 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/util.js"></script>
 </head>
-<body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
+<body class="layui-layout-body  layui-col-xs12 layui-col-md12">
+<div class="layui-layout layui-layout-admin" >
+    <div class="layui-header" style="position: inherit">
         <div class="layui-logo">菜品评价系统</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
@@ -19,10 +19,7 @@
             <li class="layui-nav-item"><a href="webSockerts.html">在线交流</a></li>
             <li class="layui-nav-item">
                 <div class="demoTable">
-                    菜品搜索：
-                    <div class="layui-inline">
-                        <input class="layui-input" name="id" id="demoReload" autocomplete="off">
-                    </div>
+                    菜品搜索：<div class="layui-inline"><input class="layui-input" name="id" id="demoReload" autocomplete="off"></div>
                     <button class="layui-btn" data-type="getInfo" id="searchMenu">搜索</button>
                 </div>
             </li>
@@ -36,7 +33,6 @@
                 </dl>
             </li>-->
         </ul>
-
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item" id="loginUserInfo">
             <li class="layui-nav-item">
@@ -52,23 +48,18 @@
                 <button class="layui-btn">登录</button>
             </a>
             </li>
-
-
         </ul>
     </div>
 
 
 
-    <div class="layui-body">
+    <div class="layui-body" >
         <!-- 内容主体区域 -->
         <script type="text/html" id="barDemo">
             <button class="layui-btn layui-btn-sm layui-btn-radius"  lay-event="detail">查看/评价</button>
             <!--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
         </script>
         <table class="layui-hide" id="table-menu-data"  lay-filter="demo"></table>
-
-
-
     </div>
 
 
