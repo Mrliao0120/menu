@@ -4,6 +4,8 @@ var queryLocalHostImage=moviesUrl+"/util/queryLocalHostImage";
 
 var queryMyEvaluate=moviesUrl+"/menuEvaluate/queryMyEvaluate";
 var queryByAndIndexId=moviesUrl+"/menu/queryByAndIndexId";
+
+var deleteMyEvaluate=moviesUrl+"/menuEvaluate/deleteMyEvaluate";
 layui.use('table', function()
 {
     var table = layui.table;
@@ -66,9 +68,9 @@ layui.use('table', function()
         if(obj.event === 'detail'){
             queryMenuEvalueateId(data.id);
         }
-        /*if (obj.event === 'delete'){
-            deleteMenu(data.id);
-        }*/
+        if (obj.event === 'delete'){
+            deleteMyEvaluates(data.id);
+        }
     });
     $('#searchMenu').on('click',function(){
         var type = $(this).data('type');
@@ -103,6 +105,29 @@ layui.use('table', function()
     });
 
 });
+
+function  deleteMyEvaluates(ids) {
+    var user=localStorage.getItem("webToken");
+    var  idc={"id":ids};
+    $.ajax({
+        url:deleteMyEvaluate,
+        type:"POST",
+        data:JSON.stringify(idc),
+        headers: {
+            "token" : user
+        },
+        contentType:"application/json",
+        dataType:"json",
+        timeout:3000,
+        success:function (data) {
+            if (data.code==200){
+                    window.location.reload();
+            }else {
+                alert(data.msg);
+            }
+        }
+    });
+}
 
 
 function  queryMenuEvalueateId(ids) {
