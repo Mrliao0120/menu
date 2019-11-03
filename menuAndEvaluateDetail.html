@@ -65,41 +65,76 @@
         </div>
         <div class="layui-form-item">
             <input type="hidden" id="id">
-            <label class="layui-form-label">菜品名称:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="menuName" name="title" readonly="readonly"  class="layui-input">
+            <div style="width:50%;hight:100%;float:left;">
+                <table border="0" >
+                    <td>
+                        <tr>
+                            <th><label class="layui-form-label">菜品名称:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="menuName" name="title" readonly="readonly"  class="layui-input">
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label class="layui-form-label">菜品单价:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="menuPrice" readonly="readonly" name="title"   class="layui-input">
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th><label class="layui-form-label">菜品楼层:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="menuFloor" readonly="readonly" name="title"   class="layui-input">
+                                </div></th>
+                        </tr>
+                        <tr>
+                            <th><label class="layui-form-label">菜品窗口:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="menuWindow" readonly="readonly" name="title"   class="layui-input">
+                                </div></th>
+                        </tr>
+                        <tr>
+                            <th><label class="layui-form-label">食堂:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="canteenName" readonly="readonly" name="title"   class="layui-input">
+                                </div></th>
+                        </tr>
+                        <tr>
+                            <th><label class="layui-form-label">评分:</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" id="menuEvaluateScore" readonly="readonly" name="title"   class="layui-input">
+                                </div></th>
+                        </tr>
+
+                    </td>
+
+
+
+
+
+
+
+                </table>
             </div>
-            <label class="layui-form-label">菜品单价:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="menuPrice" readonly="readonly" name="title"   class="layui-input">
+            <div style="width:50%;hight:100%;float:left;transform: translateX(-300px);">
+                <table border="0" >
+                    <td><label class="layui-form-label">菜品详细:</label>
+                        <div class="layui-input-inline">
+                            <textarea id="menuText" readonly="readonly" style="height: 360px;width: 230px"></textarea>
+                        </div>
+                    </td>
+                    <td>
+                        <label class="layui-form-label">菜品图片:</label>
+                        <div class="layui-input-inline">
+                            <img class="layui-upload-img" id="images" width="400 px" height="360 px"/>
+                        </div>
+                    </td>
+                </table>
             </div>
-            <label class="layui-form-label">菜品楼层:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="menuFloor" readonly="readonly" name="title"   class="layui-input">
-            </div>
-            <label class="layui-form-label">菜品窗口:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="menuWindow" readonly="readonly" name="title"   class="layui-input">
-            </div>
-            <label class="layui-form-label">食堂:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="canteenName" readonly="readonly" name="title"   class="layui-input">
-            </div>
-            <label class="layui-form-label"></label>
-            <div class="layui-input-inline">
-            </div>
-            <label class="layui-form-label">评分:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="menuEvaluateScore" readonly="readonly" name="title"   class="layui-input">
-            </div>
-            <label class="layui-form-label">菜品详细:</label>
-            <div class="layui-input-inline">
-                <textarea id="menuText" readonly="readonly" style="height: 360px;width: 230px"></textarea>
-            </div>
-            <label class="layui-form-label">菜品图片:</label>
-            <div class="layui-input-inline">
-                <img class="layui-upload-img" id="images" width="400 px" height="360 px"/>
-            </div>
+
+
         </div>
         <br/>
         <div class="layui-progress">
@@ -149,6 +184,7 @@
     .layui-body{
         left: 0px;
     }
+
 </style>
 <script>
     var url=moviesUrl+"/user/loginOut";

@@ -12,13 +12,12 @@ function updatePassWordAndNickName() {
             alert("请输入原密码!")
         }
     }
-
     var nickname=$("#nickname").val();
-    var  datas={"newPassWord":newPassWord,"password":password,"nickname":nickname};
+    var  datas={"newPassWord":newPassword,"password":password,"nickname":nickname};
     $.ajax({
         url:updatePassWordAndNickNames,
         type:"POST",
-        data:JSON.parse(datas),
+        data:JSON.stringify(datas),
         headers: {
             "token" : user
         },
@@ -27,6 +26,12 @@ function updatePassWordAndNickName() {
         timeout:3000,
         success:function (data) {
             if (data.code==200){
+                if(nickname!=null){
+                    sessionStorage.setItem("wbNickname",nickname);
+                }
+                if(password!=null&&newPassword!=null){
+                    localStorage.setItem("webToken",null);
+                }
                 window.location.reload();
             }else {
                 alert(data.msg);

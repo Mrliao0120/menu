@@ -66,7 +66,7 @@ layui.use('table', function()
     table.on('tool(demo)', function(obj){
         var data = obj.data;
         if(obj.event === 'detail'){
-            queryMenuEvalueateId(data.id);
+            queryMenuEvalueateId(data.menuId);
         }
         if (obj.event === 'delete'){
             deleteMyEvaluates(data.id);

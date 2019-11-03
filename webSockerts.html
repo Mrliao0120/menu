@@ -9,9 +9,17 @@
     <script src="wbjs/jqueryWebSocket.js"></script>
     <script src="wbjs/wbLoginValidation.js"></script>
     <script src="layui/layui.js"></script>
+    <style>
+        body{
+            background: url("wbjs/wl2.jpg") no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+    </style>
 </head>
 <style type="text/css">
     .talk_con{
+        float: left;
         width:600px;
         height:500px;
         border:1px solid #666;
@@ -99,7 +107,9 @@
 <div style="text-align-all: center">
 
     <div class="talk_con">
+        <a href="index.html"><input type="button" value="返回菜品首页"  ></a>
         <div class="talk_show" id="words">
+
             <div class="atalk" id="atalk">
                 <!--<span id="asay">A说：吃饭了吗？</span>-->
             </div>
@@ -143,7 +153,7 @@
         /**
          * WebSocket客户端 PS：URL开头表示WebSocket协议 中间是域名端口 结尾是服务端映射地址
          */
-        var webSocket = new WebSocket('ws://localhost:3535/websocket');
+        var webSocket = new WebSocket('ws://biyesehji.wicp.vip:42410/websocket');
         /**
          * 当服务端打开连接
          */
@@ -162,7 +172,7 @@
             //喉咙发炎
             if (message.type === 'SPEAK') {
                 $messageContainer.append(
-                    "<span id='asay'>"+ message.username + "说:" + message.msg + "</span>"
+                    "<span id='asay'>"+ message.username + "说:" + message.msg + "</span> </br></br>"
                 );
             }
             $('.chat-num').text(message.onlineCount);
@@ -203,6 +213,7 @@
         if($message!=null){
             webSocket.send(JSON.stringify({"username": wbNickname, "msg": $message}));
             $message=null;
+            $('#msg').val("");
         }
 
 

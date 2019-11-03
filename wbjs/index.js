@@ -51,7 +51,7 @@ layui.use('table', function()
             {field:'menuFloor', title: '菜品楼层', width: 100},
             {field:'menuWindow', title: '菜品窗口', width: 100},
             {field:'canteenName', width:100, title: '食堂', sort: false},
-            {field:'menuEvaluateScore', title: '平均得分', width: 100,templet:function (data) {
+            {field:'menuEvaluateScore', title: '平均得分', sort: true,templet:function (data) {
                     if (data.menuEvaluateScore!=null){
                         return  data.menuEvaluateScore;
                     }else {
