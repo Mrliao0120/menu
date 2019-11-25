@@ -33,7 +33,7 @@ layui.use('table', function()
         headers:{"BackgroundToken":user},
         cols: [[
             {field:'id', width:100, title: 'ID', sort: false},
-            {field:'menuName', width:180, title: '菜品名称'},
+            {field:'menuName', width:180, title: '菜品名称',sort: true},
             {field:'menuEvaluate', width:200, title: '菜品评价'},
             {field:'menuEvaluateScore', width:100, title: '菜品评分'},
             {field:'menuType', width:100, title: '回复类型', templet:function (data) {
