@@ -3,114 +3,29 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>菜品评价系统</title>
+    <title>天气系统</title>
     <link rel="stylesheet" href="layui/css/layui.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/util.js"></script>
 </head>
-<body class="layui-layout-body">
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo">菜品评价系统</div>
-        <!-- 头部区域（可配合layui已有的水平导航） -->
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="">菜品</a></li>
-            <li class="layui-nav-item"><a href="myEvaluate.html">我的点评</a></li>
-            <li class="layui-nav-item"><a href="webSockerts.html">在线交流</a></li>
-            <li class="layui-nav-item">
-                <div class="demoTable">
-                    菜品搜索：
-                    <div class="layui-inline">
-                        <input class="layui-input" name="id" id="demoReload" autocomplete="off">
-                    </div>
-                    <button class="layui-btn" data-type="getInfo" id="searchMenu">搜索</button>
-                </div>
-            </li>
-            <!--<li class="layui-nav-item"><a href="">用户</a></li>
-            <li class="layui-nav-item">
-                <a href="javascript:;">其它系统</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="">邮件管理</a></dd>
-                    <dd><a href="">消息管理</a></dd>
-                    <dd><a href="">授权管理</a></dd>
-                </dl>
-            </li>-->
-        </ul>
-
-        <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item" id="loginUserInfo">
-            <li class="layui-nav-item">
-                <span id="userName" class="layui-nav-item"></span>
-            </li>
-            <li class="layui-nav-item" id="updateUser">
-                <!--<a href="updatePassWord.html">修改用户信息</a>-->
-            </li>
-            <li class="layui-nav-item" id="loginOut">
-               <!-- <a href="#" onclick="loginOut()">退出登录</a>-->
-            </li>
-            <a href="Login.html" id="login">
-                <button class="layui-btn">登录</button>
-            </a>
-            </li>
-
-
-        </ul>
-    </div>
-
-
-
-    <div class="layui-body">
-        <!-- 内容主体区域 -->
-        <script type="text/html" id="barDemo">
-            <button class="layui-btn layui-btn-sm layui-btn-radius"  lay-event="detail">查看/评价</button>
-            <!--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
-        </script>
-        <table class="layui-hide" id="table-menu-data"  lay-filter="demo"></table>
-
-
-
-    </div>
-
-
-</div>
-<script src="layui/layui.js"></script>
-<script src="wbjs/wbLoginValidation.js"></script>
-<script src="wbjs/index.js"></script>
-<style type="text/css">
-    .layui-table-cell{
-        text-align:center;
-        height: auto;
-        white-space: normal;
-    }
-    .layui-body{
-        left: 0px;
-    }
-</style>
-<script>
-    var url=moviesUrl+"/user/loginOut";
-    var user=localStorage.getItem("webToken");
-    function loginOut() {
-        $.ajax({
-            url:url,
-            type:"POST",
-            dataType:"json",
-            headers: {
-                "token" : user
-            },
-            timeout:3000,
-            success:function (data) {
-                if (data.code==200){
-                    localStorage.setItem("webToken",null);
-                    sessionStorage.setItem("wbnickname",null);
-                    localStorage.setItem("wbUsername",null);
-                    alert("退出登录成功");
-                    window.location.reload();
-                }else {
-                    alert(data.msg);
-                }
+    <div id="he-plugin-standard"></div>
+    <script>
+        WIDGET = {
+            CONFIG: {
+                "layout": 1,
+                "width": "450",
+                "height": "150",
+                "background": 1,
+                "dataColor": "FFFFFF",
+                "language": "zh",
+                "borderRadius": 5,
+                "key": "1b00e7840a2e43f49af0a534f3adb54c"
             }
-        })
-    };
-</script>
+        }
+    </script>
+    <script src="https://widget.heweather.net/standard/static/js/he-standard-common.js?v=1.1"></script>
+</div>
+
+
 </body>
 </html>

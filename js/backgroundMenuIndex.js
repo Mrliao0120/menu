@@ -31,8 +31,8 @@ layui.use('table', function()
         headers:{"BackgroundToken":user},
         cols: [[
             {field:'id', width:100, title: 'ID', sort: false},
-            {field:'menuName', width:180, title: '菜品名称'},
-            {field:'menuImage', width:150, title: '菜品图片', templet:function (data) {
+            {field:'menuName', width:180, title: '图片名称'},
+            {field:'menuImage', width:250, title: '图片', templet:function (data) {
                     if (data.menuImage!=null){
                         return  "<div><img class=\"layui-upload-img\" src='"+queryLocalHostImage+"?pathName="+data.menuImage+"' width=\"300px\"/></div>";
                     }else {
@@ -40,11 +40,11 @@ layui.use('table', function()
                     }
                 }
             },
-            {field:'menuPrice', width:100, title: '菜品单价'},
+            /*{field:'menuPrice', width:100, title: '菜品单价'},
             {field:'menuText', title: '菜品详细', width: 100},
             {field:'menuFloor', title: '菜品楼层', width: 100},
-            {field:'menuWindow', title: '菜品窗口', width: 100},
-            {field:'canteenName', width:100, title: '食堂', sort: false},
+            {field:'menuWindow', title: '菜品窗口', width: 100},*/
+            /*{field:'canteenName', width:100, title: '食堂', sort: false},*/
             {field:'isDelete', width:100, title: '是否删除', templet:function (data) {
                     var  value= data.isDelete!=null?data.isDelete==1?"是":"否":"否";
                     return  value

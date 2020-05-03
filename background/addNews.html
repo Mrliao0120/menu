@@ -54,57 +54,64 @@
     </div>
 
     <div class="layui-body">
-        <input type="hidden" id="id">
+        <h2>新闻详情：</h2>
         <div class="layui-form-item">
-            <label class="layui-form-label">图片名称:</label>
+            <input type="hidden" id="id">
+            <label class="layui-form-label">标题:</label>
             <div class="layui-input-inline">
-                <input type="text" id="menu_name" name="title" required  lay-verify="required" placeholder="请输入图片名称" class="layui-input">
+                <input type="text" id="menuName"    class="layui-input">
             </div>
-        </div>
-      <!--  <div class="layui-form-item">
-            <label class="layui-form-label">菜品价格:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="menu_price" onkeyup="value=value.replace(/[^\d]/g,'')" name="title" required  lay-verify="required" placeholder="请输入菜品单价" class="layui-input">
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">封面图片上传:</label>
+                <div class="layui-input-inline">
+                    <button type="button" class="layui-btn" id="uploadImage">上传图片</button>
+                    <div class="layui-upload-list">
+                        <img class="layui-upload-img" id="images" width="400 px" height="360 px"/>
+                        <p id="demoText"></p>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">菜品楼层:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="menu_floor" name="title" required  lay-verify="required" placeholder="请输入菜品楼层" class="layui-input">
+            <label class="layui-form-label">内容:</label>
+
+            <div>
+                <textarea id="demo" style="display: none;"></textarea>
             </div>
+
         </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">菜品窗口:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="menu_window" name="title" required  lay-verify="required" placeholder="请输入菜品窗口" class="layui-input">
+        <br/>
+        <!--<div class="layui-progress">
+            <div class="layui-progress-bar layui-bg-green" lay-percent="100%"></div>
+        </div>
+        <div class="layui-box" id="layui-form-item">
+            <div class="layui-form-item" id="returnText">
+            <h3>管理员回复内容:</h3>
+                <label class="layui-form-label">管理员:</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="returnNickName" readonly="readonly" name="title"   class="layui-input">
+                </div>
+                <label class="layui-form-label">回复:</label>
+                <div class="layui-input-inline">
+                    <input type="text" id="returnMenuEvaluate" readonly="readonly" name="title"  class="layui-input">
+                </div>
             </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">食堂:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="canteen_name" name="title" required  lay-verify="required" placeholder="请输入食堂" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">菜品详细:</label>
-            <div class="layui-input-block">
-                <textarea placeholder="请输入内容" id="menuText" class="layui-textarea"></textarea>
+
+            <div class="layui-form-item" id="returnInfo">
+                <label class="layui-form-label">回复评价:</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" id="textEvaluate" class="layui-textarea"></textarea>
+                </div>
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="addReturnEvaluate()">立即提交</button>
+                    &lt;!&ndash;<button type="reset" class="layui-btn layui-btn-primary">重置</button>&ndash;&gt;
+                </div>
             </div>
         </div>-->
         <div class="layui-form-item">
-            <label class="layui-form-label">图片上传:</label>
-            <div class="layui-input-inline">
-                <button type="button" class="layui-btn" id="uploadImage">上传图片</button>
-                <div class="layui-upload-list">
-                    <img class="layui-upload-img" id="images" width="400 px" height="360 px"/>
-                    <p id="demoText"></p>
-                </div>
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="updateMenu()">立即提交</button>
-                <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
+            <div class="site-demo-button">
+                <button class="layui-btn site-demo-layedit" data-type="content" >立即提交</button>
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
 
@@ -116,7 +123,9 @@
     </div>
 </div>
 <script src="../layui/layui.js"></script>
-<script src="../js/bgUpdateMenu.js"></script>
+<script src="../js/addNewsInfoIndex.js"></script>
+
+
 </body>
 </html>
 
