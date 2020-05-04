@@ -94,10 +94,10 @@ function addEvalueate() {
     var data2=localStorage.getItem("menuEvaluateDetailIndex");
     var user=localStorage.getItem("webToken");
     var  scoreEvaluate=$("#scoreEvaluate").val();
-    if(scoreEvaluate==null||scoreEvaluate<0||scoreEvaluate>100){
+    /*if(scoreEvaluate==null||scoreEvaluate<0||scoreEvaluate>100){
         alert("评分不能为空/不能超过最大数")
         return;
-    }
+    }*/
     var  textEvaluate=$("#textEvaluate").val();
     if(textEvaluate==null){
         alert("评论不能为空");
@@ -118,8 +118,8 @@ function addEvalueate() {
         timeout:3000,
         success:function (data) {
             if (data.code==200){
-                alert("评价成功!");
-                    queryMenuEvalueateId(menuId);
+                alert("留言成功!");
+                window.location.reload();
             }else {
                 alert(data.msg);
             }

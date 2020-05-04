@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>天气系统</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/util.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="wbjs/menuDetail.js"></script>
+
+    <style>
+        .search .in{
+            width:454px;
+            height:30px;
+            border:2px solid #007DDB;
+            outline:none;
+            font:14px/30px "microsoft yahei";
+        }
+        .search .btn_search{
+            background:#007DDB;
+            width:80px;
+            height:34px;
+            color:white;
+            border:none;
+            outline:none;
+            font:14px/34px "microsoft yahei";
+        }
+    </style>
+</head>
+<body>
+
+
+
+<ul class="layui-nav layui-bg-blue" lay-filter="">
+    <li class="layui-nav-item "><a href="index.html">首页</a></li>
+    <li class="layui-nav-item "><a href="newsArray.html">新闻资讯</a></li>
+    <li class="layui-nav-item layui-this"><a href="leaveWord.html">留言</a></li>
+</ul>
+
+<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">留言内容</label>
+    <div class="layui-input-block">
+        <textarea placeholder="请输入内容" id="textEvaluate" class="layui-textarea"></textarea>
+    </div>
+
+</div>
+<div class="layui-form-item" style="text-align: center">
+    <button class="layui-btn" lay-submit="" onclick="addEvalueate()">提交留言</button>
+</div>
+
+<!-- <div id="he-plugin-standard"></div>
+ <script>
+     WIDGET = {
+         CONFIG: {
+             "layout": 1,
+             "width": "450",
+             "height": "150",
+             "background": 1,
+             "dataColor": "FFFFFF",
+             "language": "zh",
+             "borderRadius": 5,
+             "key": "1b00e7840a2e43f49af0a534f3adb54c"
+         }
+     }
+ </script>
+ <script src="https://widget.heweather.net/standard/static/js/he-standard-common.js?v=1.1"></script>
+</div>-->
+
+
+</body>
+
+
+
+
+
+</html>

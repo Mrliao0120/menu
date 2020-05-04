@@ -41,7 +41,7 @@
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree"  lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed" id="addUserMenu">
-                    <a class="" href="javascript:;">天气新闻相关</a>
+                    <a class="" href="javascript:;">首页相关</a>
                     <dl class="layui-nav-child">
                         <dd><a href="menuIndex.html">图片列表</a></dd>
                         <dd><a href="weatherInfo.html">天气列表</a></dd>
@@ -54,44 +54,26 @@
         </div>
     </div>
 
-    <div class="layui-body" style="position: relative; left:40%; top:250px;">
-        <div class="layui-form-item">
-            <label class="layui-form-label">账号名称:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="account" name="title" required  lay-verify="required" placeholder="请输入账号" class="layui-input">
+    <div class="layui-body">
+        <fieldset class="layui-elem-field " style="margin-top: 30px;">
+        </fieldset>
+        <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
+            菜品搜索:
+            <div class="layui-inline">
+                <input class="layui-input" name="id" id="demoReload" autocomplete="off">
             </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">密码:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="password"  name="title" required  lay-verify="required" placeholder="请输入密码" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">昵称:</label>
-            <div class="layui-input-inline">
-                <input type="text" id="nickname" name="title" required  lay-verify="required" placeholder="请输入昵称" class="layui-input">
-            </div>
+            <button class="layui-btn" data-type="getInfo" id="searchMenu">搜索</button>
+
         </div>
 
-        <div class="layui-form-item">
-            <label class="layui-form-label">用户权限</label>
-            <div class="layui-input-inline">
-                <select id="systemLevel">
-                    <option value="1" selected="">系统管理员</option>
-                    <option value="2">菜品管理员</option>
-                </select>
-            </div>
-        </div>
+        <script type="text/html" id="barDemo">
+            <button class="layui-btn layui-btn-sm layui-btn-radius"  lay-event="detail">查看/回复</button>
+            <button data-method="offset" data-type="auto" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger" lay-event="delete">删除评论</button>
+            <!--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
+        </script>
 
-
-        <div class="layui-form-item">
-            <div class="layui-input-block">
-                <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="addMenuAe()">提交</button>
-                <!--<button type="reset" class="layui-btn layui-btn-primary">重置</button>-->
-            </div>
-        </div>
-
+        <!-- 内容主体区域 -->
+        <table class="layui-hide" id="table-menu-data" lay-filter="demo"></table>
     </div>
 
     <div class="layui-footer">
@@ -100,17 +82,7 @@
     </div>
 </div>
 <script src="../layui/layui.js"></script>
-<script src="../js/bgAddAccountUser.js"></script>
+<script src="../js/bgMenuEvaluateIndex.js"></script>
+<script src="../js/bgAddMenuAe.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
