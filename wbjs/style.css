@@ -1,0 +1,34 @@
+@charset "utf-8";
+*{margin:0;padding:0;box-sizing:border-box;font-family:"Arial";font-weight:normal}
+body{color:#6F7479;}
+:after,:before{box-sizing:inherit}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+/*栅格及盒子防塌陷*/
+.col-sm-4{float:left;width:33.33333333%;padding:10px}
+.AGrid-row{clear:both}
+.AGrid-row:before,.AGrid-row:after{content:" ";display:table;line-height:0}
+.AGrid-row:after{clear:both}
+/*背景颜色*/
+.bg-grey{background-color:#f5f5f5}
+.developer-community-block{max-width:1200px;text-align:center;padding:50px 0;clear:both;margin:0 auto}
+/*大标题*/
+.titleBar{text-align:center}
+.titleBar .caption{font-size:36px;color:#252b3a;letter-spacing:0;text-align:center;line-height:46px;margin-bottom:10px}
+.descript{margin-bottom:40px;font-size:16px;color:#A0A2A8}
+.AGrid-row.gap{margin:-10px}
+/*更多链接*/
+.developer-community-block .titleBar .descript a{color:#2D56B1;display:inline-block}
+.developer-community-block .titleBar .descript a:hover{text-decoration:underline}
+/*图片新闻*/
+.developer-community-block .tile img{width:100%;height:191px}
+.developer-community-block .tile{position:relative;font-size:0;background:#FFFFFF;box-shadow:0 8px 16px 0 rgba(0,0,0,0.10);border-radius:2px}
+.developer-community-block .tile:hover .title{cursor:pointer;color:#F66F6A}
+.developer-community-block .tile .title{padding:16px 30px;font-size:14px;color:#252B3A;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/*文字新闻*/
+.developer-community-block .layer-text{margin-top:10px;padding:10px 30px 10px 16px}
+.developer-community-block .developer-community{text-align:left}
+.developer-community-block .layer-text a{position:relative;display:inline-block;max-width:100%;font-size:14px;color:#252B3A;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:8px}
+.developer-community-block .layer-text a:hover{color:#F66F6A}
+.developer-community-block .layer-text a span{margin-left:14px}
+.developer-community-block .layer-text a:before{content:"";position:absolute;border:2px solid #E41F2B;border-radius:50%;top:8px;left:0px}

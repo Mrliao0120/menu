@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>天气系统</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/util.js"></script>
+    <script src="layui/layui.js"></script>
+    <script src="wbjs/newList.js"></script>
+    <link rel="stylesheet" type="text/css" href="wbjs/style.css" />
+    <style>
+        .search .in{
+            width:454px;
+            height:30px;
+            border:2px solid #007DDB;
+            outline:none;
+            font:14px/30px "microsoft yahei";
+        }
+        .search .btn_search{
+            background:#007DDB;
+            width:80px;
+            height:34px;
+            color:white;
+            border:none;
+            outline:none;
+            font:14px/34px "microsoft yahei";
+        }
+    </style>
+</head>
+<body>
+<div class="search" style="text-align: center;height: 150px;position: relative;top: 50px;">
+    <input type="text" class="in" placeholder="查询新闻关键字" id="newsId" /><button class="btn_search" onclick="findNewsInfo()">搜索</button>
+</div>
+<ul class="layui-nav layui-bg-blue" lay-filter="">
+    <li class="layui-nav-item "><a href="index.html">首页</a></li>
+    <li class="layui-nav-item layui-this"><a href="newsArray.html">新闻资讯</a></li>
+</ul>
+<div class="bg-grey">
+    <div class="developer-community-block ">
+
+        <div class="AGrid-row gap developer-community">
+
+            <div class="col-sm-4 ">
+
+                <div class="tile" id="stitle1">
+
+                </div>
+
+                <ul class="layer-text" id="stext1">
+
+                </ul>
+            </div>
+            <div class="col-sm-4 ">
+
+                <div class="tile" id="stitle2">
+
+                </div>
+
+                <ul class="layer-text" id="stext2">
+
+                </ul>
+            </div>
+            <div class="col-sm-4 ">
+
+                <div class="tile" id="stitle3">
+
+                </div>
+
+                <ul class="layer-text" id="stext3">
+
+            </div>
+        </div>
+    </div>
+    <div class="developer-community-block ">
+        <div class="titleBar">
+            <h3 class="caption">最新新闻</h3>
+        </div>
+        <div class="AGrid-row gap developer-community">
+
+            <div class="col-sm-4 ">
+
+                    <div class="tile" id="title1">
+
+                    </div>
+
+                <ul class="layer-text" id="text1">
+
+                </ul>
+            </div>
+            <div class="col-sm-4 ">
+
+                    <div class="tile" id="title2">
+
+                    </div>
+
+                <ul class="layer-text" id="text2">
+
+                </ul>
+            </div>
+            <div class="col-sm-4 ">
+
+                    <div class="tile" id="title3">
+
+                    </div>
+
+                <ul class="layer-text" id="text3">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+   <!-- <div id="he-plugin-standard"></div>
+    <script>
+        WIDGET = {
+            CONFIG: {
+                "layout": 1,
+                "width": "450",
+                "height": "150",
+                "background": 1,
+                "dataColor": "FFFFFF",
+                "language": "zh",
+                "borderRadius": 5,
+                "key": "1b00e7840a2e43f49af0a534f3adb54c"
+            }
+        }
+    </script>
+    <script src="https://widget.heweather.net/standard/static/js/he-standard-common.js?v=1.1"></script>
+</div>-->
+
+
+</body>
+
+<script>
+    var  queryNewsIndex=moviesUrl+"/web/news/info/findList";
+    function findNewsInfo(){
+        var newInf=$("#newsId").val();
+        var user=localStorage.getItem("webToken");
+        var  requestData={"title":newInf};
+        $.ajax({
+            url:queryNewsIndex,
+            type:"POST",
+            data:JSON.stringify(requestData),
+            contentType:"application/json",
+            headers: {
+                "token" : user
+            },
+            dataType:"json",
+            timeout:3000,
+            success:function (data) {
+                if (data.code==200){
+                    if (data.data!=null){
+                        var d=  data.data;
+                        var htmlInner1=" ";
+                        var htmlInner2=" ";
+                        var htmlInner3=" ";
+                        $.each(d,function(i,item){
+                            if (i==0){
+                                var  htmlInner="<a href=\"#\" onclick='queryNews("+item.id+")'><img src=\"http://localhost:3535/util/queryLocalHostImage?pathName="+item.coverImg+"\"/>" +
+                                    "<h2 class=\"title\">"+item.title+"</h2></a>";
+                                $("#stitle1").append(htmlInner)
+                            }
+                            else if (i==1){
+                                var  htmlInner="<a href=\"#\" onclick='queryNews("+item.id+")'><img src=\"http://localhost:3535/util/queryLocalHostImage?pathName="+item.coverImg+"\"/>" +
+                                    "<h2 class=\"title\">"+item.title+"</h2>";
+                                $("#stitle2").append(htmlInner)
+                            }
+                            else if (i==2){
+                                var  htmlInner="<a href=\"#\" onclick='queryNews("+item.id+")'><img src=\"http://localhost:3535/util/queryLocalHostImage?pathName="+item.coverImg+"\"/>" +
+                                    "<h2 class=\"title\">"+item.title+"</h2></a>";
+                                $("#stitle3").append(htmlInner)
+                            }else if (i>=3&&i<6){
+                                htmlInner1+="<li><a href='#' onclick='queryNews("+item.id+")'><span>"+item.title+"</span></a></li>";
+
+                            }else if (i>=6&&i<9){
+                                htmlInner2+="<li><a href='#' onclick='queryNews("+item.id+")'><span>"+item.title+"</span></a></li>";
+
+                            }else if (i>=9&&i<12){
+                                htmlInner3+="<li><a href='#' onclick='queryNews("+item.id+")'><span>"+item.title+"</span></a></li>";
+
+                            }
+
+                        });
+                        $("#stext1").html(htmlInner1);
+                        $("#stext2").html(htmlInner2);
+                        $("#stext3").html(htmlInner3);
+                        window.location.reload();
+                    }else {
+                        alert(data.msg);
+                    }
+                }else {
+                    alert(data.msg);
+                }
+            }
+        });
+
+    }
+</script>
+
+
+</html>

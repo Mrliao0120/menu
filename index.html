@@ -9,6 +9,7 @@
     <script src="js/util.js"></script>
     <script src="layui/layui.js"></script>
    <script src="wbjs/menuIndex.js"></script>
+    <script src="wbjs/index.js"></script>
     <link rel="stylesheet" href="wbjs/banner.css">
     <style>
         .search .in{
@@ -31,13 +32,13 @@
 </head>
 <body>
 <div class="search" style="text-align: center;height: 150px;position: relative;top: 50px;">
-    <input type="text" class="in" value="" /><button class="btn_search">搜索</button>
+    <input type="text" class="in" placeholder="查询新闻关键字" id="newsId" /><button class="btn_search" onclick="findWeather()">搜索</button>
 </div>
 
 
 <ul class="layui-nav layui-bg-blue" lay-filter="">
     <li class="layui-nav-item layui-this"><a href="index.html">首页</a></li>
-    <li class="layui-nav-item "><a href="news.html">新闻资讯</a></li>
+    <li class="layui-nav-item "><a href="newsArray.html">新闻资讯</a></li>
 </ul>
 
 <div id="banner-tab" class="flexslider">

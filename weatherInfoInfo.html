@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>天气系统</title>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/util.js"></script>
+    <script src="layui/layui.js"></script>
+
+    <style>
+        .search .in{
+            width:454px;
+            height:30px;
+            border:2px solid #007DDB;
+            outline:none;
+            font:14px/30px "microsoft yahei";
+        }
+        .search .btn_search{
+            background:#007DDB;
+            width:80px;
+            height:34px;
+            color:white;
+            border:none;
+            outline:none;
+            font:14px/34px "microsoft yahei";
+        }
+    </style>
+</head>
+<body>
+<!--<div class="search" style="text-align: center;height: 150px;position: relative;top: 50px;">
+    <input type="text" class="in" placeholder="查询新闻关键字" id="newsId" /><button class="btn_search" onclick="findNewsInfo()">搜索</button>
+</div>-->
+
+
+<ul class="layui-nav layui-bg-blue" lay-filter="">
+    <li class="layui-nav-item "><a href="index.html">首页</a></li>
+    <li class="layui-nav-item layui-this"><a href="newsArray.html">新闻资讯</a></li>
+</ul>
+
+<div class="layui-form">
+    <table class="layui-table">
+        <colgroup>
+            <col width="150">
+            <col width="150">
+            <col width="200">
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th>城市</th>
+            <th>体感温度</th>
+            <th>日期</th>
+            <th>温度</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr id="weatherInfo">
+         <!--   <td>贤心</td>
+            <td>汉族</td>
+            <td>1989-10-14</td>
+            <td>人生似修行</td>-->
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+</body>
+
+<script>
+    $(document).ready(function(){
+    var user=localStorage.getItem("weatherData");
+    var  datas=JSON.parse(user);
+    if(datas!=null){
+        var htmls="<td>"+datas.location+"</td><td>"+datas.fl+"</td><td>"+formatDate(datas.gmtGreate)+"</td><td>"+datas.tmp+"</td>";
+        $("#weatherInfo").html(htmls);
+    }
+    });
+
+</script>
+
+
+</html>
