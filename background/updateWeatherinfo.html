@@ -8,6 +8,7 @@
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/util.js"></script>
     <script src="../js/bgLoginValidation.js"></script>
+    <script src="../js/bgWeatherInfo.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -54,34 +55,42 @@
     </div>
 
     <div class="layui-body">
-        <h2>新闻详情：</h2>
+        <div class="layui-form-item">
+            <h3>用户评价内容:</h3>
+        </div>
         <div class="layui-form-item">
             <input type="hidden" id="id">
-            <label class="layui-form-label">标题:</label>
+            <label class="layui-form-label">城市名称:</label>
             <div class="layui-input-inline">
-                <input type="text" id="menuName"    class="layui-input">
+                <input type="text" id="location" name="title"  class="layui-input">
             </div>
 
-
-            <div class="layui-form-item">
-                <label class="layui-form-label">封面图片上传:</label>
-                <div class="layui-input-inline">
-                    <button type="button" class="layui-btn" id="uploadImage">上传图片</button>
-                    <div class="layui-upload-list">
-                        <img class="layui-upload-img" id="images" width="400 px" height="360 px"/>
-                        <p id="demoText"></p>
-                    </div>
-                </div>
+            <label class="layui-form-label">体感温度:</label>
+            <div class="layui-input-inline">
+                <input type="text" id="fl"  name="title"   class="layui-input">
             </div>
-            <label class="layui-form-label">内容:</label>
-
-            <div>
-                <textarea id="demo" style="display: none;"></textarea>
+            <label class="layui-form-label">摄氏度:</label>
+            <div class="layui-input-inline">
+                <input type="text" id="tmp"  name="title"  class="layui-input">
             </div>
-
+            <label class="layui-form-label">天气描述:</label>
+            <div class="layui-input-inline">
+                <input type="text" id="condTxt"  name="title"   class="layui-input">
+            </div>
+            <label class="layui-form-label">风向360角度:</label>
+            <div class="layui-input-inline">
+                <input type="text" id="windDeg"  name="title"   class="layui-input">
+            </div>
+            <label class="layui-form-label">风向:</label>
+            <div class="layui-input-inline">
+                <input type="text" id="windDir"  name="title"   class="layui-input">
+            </div>
         </div>
         <br/>
-        <!--<div class="layui-progress">
+
+
+        <!--
+            <div class="layui-progress">
             <div class="layui-progress-bar layui-bg-green" lay-percent="100%"></div>
         </div>
         <div class="layui-box" id="layui-form-item">
@@ -98,10 +107,7 @@
             </div>
 
             <div class="layui-form-item" id="returnInfo">
-                <label class="layui-form-label">回复评价:</label>
-                <div class="layui-input-block">
-                    <textarea placeholder="请输入内容" id="textEvaluate" class="layui-textarea"></textarea>
-                </div>
+
                 <div class="layui-input-block">
                     <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="addReturnEvaluate()">立即提交</button>
                     &lt;!&ndash;<button type="reset" class="layui-btn layui-btn-primary">重置</button>&ndash;&gt;
@@ -109,8 +115,8 @@
             </div>
         </div>-->
         <div class="layui-form-item">
-            <div class="site-demo-button">
-                <button class="layui-btn site-demo-layedit" data-type="content" >立即提交</button>
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="updateMenu()">立即提交</button>
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
@@ -123,9 +129,25 @@
     </div>
 </div>
 <script src="../layui/layui.js"></script>
-<script src="../js/newsInfoIndex.js"></script>
+<script>
+    $(document).ready(function(){
+        var data2=localStorage.getItem("weatherData");
+        var  datas=JSON.parse(data2);
+        if(datas!=null){
+            id=datas.id;
+            $("#id").val(id);
+            $("#location").val(datas.location);
 
+            $("#fl").val(datas.fl);
+            $("#tmp").val(datas.tmp);
+            $("#condTxt").val(datas.condTxt);
+            $("#windDeg").val(datas.windDeg);
+            $("#windDir").val(datas.windDir);
 
+        }
+    });
+
+</script>
 </body>
 </html>
 

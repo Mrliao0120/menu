@@ -7,8 +7,42 @@
     <link rel="stylesheet" href="layui/css/layui.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/util.js"></script>
+    <script src="layui/layui.js"></script>
+   <script src="wbjs/menuIndex.js"></script>
+    <link rel="stylesheet" href="wbjs/banner.css">
+
 </head>
-    <div id="he-plugin-standard"></div>
+<body>
+<div class="layui-btn" style="width: 200px;height: 150px; ">
+     <input class="layui-input"><button type="button" class="layui-btn layui-btn-normal">搜索</button></input>
+</div>
+
+
+<ul class="layui-nav layui-bg-blue" lay-filter="">
+    <li class="layui-nav-item layui-this"><a href="index.html">首页</a></li>
+    <li class="layui-nav-item "><a href="news.html">新闻资讯</a></li>
+</ul>
+
+<div id="banner-tab" class="flexslider">
+    <div class="slideBox">
+        <ul class="slides" id="carousel">
+
+        </ul>
+    </div>
+
+    <ul class="flex-direction-nav">
+        <li disabled="true" class="prev"><</li>
+        <li class="next">></li>
+    </ul>
+    <ol id="bannerCtrl">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ol>
+</div>
+
+   <!-- <div id="he-plugin-standard"></div>
     <script>
         WIDGET = {
             CONFIG: {
@@ -24,8 +58,31 @@
         }
     </script>
     <script src="https://widget.heweather.net/standard/static/js/he-standard-common.js?v=1.1"></script>
-</div>
+</div>-->
 
 
 </body>
+<script src="wbjs/banner.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var bannerSlide = new slide($("#banner-tab"), {
+            time: 4000,
+            event: "hover",
+            auto: true,
+            controller: $('#bannerCtrl')
+        });
+
+        $(".prev").click(function () {
+            bannerSlide.prev();
+        });
+
+        $(".next").click(function () {
+            bannerSlide.next();
+        })
+
+    })
+</script>
+
+
+
 </html>

@@ -1,6 +1,6 @@
 //公共工具js
 //window.moviesUrl="//biyesehji.wicp.vip:42410";
-window.moviesUrl="//biyesehji.wicp.vip:42410";
+window.moviesUrl="//localhost:3535";
 
 
 /*function   formatDate(now)   {

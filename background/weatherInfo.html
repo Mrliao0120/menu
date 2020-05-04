@@ -8,6 +8,7 @@
     <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="../js/util.js"></script>
     <script src="../js/bgLoginValidation.js"></script>
+    <script src="../js/bgWeatherInfo.js"></script>
 </head>
 <body class="layui-layout-body">
 <div class="layui-layout layui-layout-admin">
@@ -44,7 +45,7 @@
                     <a class="" href="javascript:;">天气新闻相关</a>
                     <dl class="layui-nav-child">
                         <dd><a href="menuIndex.html">图片列表</a></dd>
-                        <dd><a href="weatherInfo.html">天气列表</a></dd>
+                        <dd><a href="#">天气列表</a></dd>
                         <dd><a href="newsInfoIndex.html">新闻列表</a></dd>
                     </dl>
                 </li>
@@ -54,13 +55,17 @@
     </div>
 
     <div class="layui-body">
-        <fieldset class="layui-elem-field " style="margin-top: 30px;"></fieldset>
+        <fieldset class="layui-elem-field " ></fieldset>
         <div class="site-demo-button">
             <div class="site-demo-button" id="layerDemo" style="margin-bottom: 0;">
-                <a href="addAccount.html"><button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal">新增管理员</button></a>
-                用户搜索:
                 <div class="layui-inline">
-                    <input class="layui-input" name="id" id="demoReload" placeholder="请输入账号或昵称" autocomplete="off">
+                    <input class="layui-input"  id="reload" autocomplete="off">
+                </div>
+                <button class="layui-btn"  onclick="insertWeatherInfoFunction()">天气爬虫搜索</button>
+                <!--<a href="addMenu.html"><button data-method="offset" data-type="auto" class="layui-btn layui-btn-normal">查询新天气</button></a>-->
+                天气搜索:
+                <div class="layui-inline">
+                    <input class="layui-input" name="id" id="demoReload" autocomplete="off">
                 </div>
                 <button class="layui-btn" data-type="getInfo" id="searchMenu">搜索</button>
             </div>
@@ -68,14 +73,13 @@
 
 
         <script type="text/html" id="barDemo">
+            <button class="layui-btn layui-btn-sm layui-btn-radius"  lay-event="detail">查看/更新</button>
             <button data-method="offset" data-type="auto" class="layui-btn layui-btn-sm layui-btn-radius layui-btn-danger" lay-event="delete">删除</button>
-            <!--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-                <button class="layui-btn layui-btn-sm layui-btn-radius"  lay-event="detail">查看/修改</button>
-            -->
+            <!--<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>-->
         </script>
 
         <!-- 内容主体区域 -->
-        <table class="layui-hide" id="table-menu-data"  lay-filter="demo"></table>
+        <table class="layui-hide" id="table-menu-data"  lay-filter="demo" ></table>
     </div>
 
     <div class="layui-footer">
@@ -84,6 +88,16 @@
     </div>
 </div>
 <script src="../layui/layui.js"></script>
-<script src="../js/bgAccountUserIndex.js"></script>
+<script src="../js/bgWeatherInfo.js"></script>
+<style type="text/css">
+    .layui-table-cell{
+        text-align:center;
+        height: auto;
+        white-space: normal;
+    }
+    .layui-body{
+        left: 12%;
+    }
+</style>
 </body>
 </html>

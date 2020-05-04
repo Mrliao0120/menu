@@ -47,7 +47,7 @@ function addReturnEvaluate() {
         success:function (data,status,request) {
             if (data.code==200){
                 alert("回复成功");
-                window.location.href="../background/menuEvaluate.html";
+                window.location.href="../background/weatherInfo.html";
             }else {
                 alert(data.msg);
             }

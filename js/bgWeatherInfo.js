@@ -1,17 +1,17 @@
-//后台用户首页
-var queryPageByCondition=moviesUrl+"/account/queryAccountPage";
+//后台菜品首页
+var queryPageByCondition=moviesUrl+"/weatherInfo/findWeatherInfoDO";
 //var queryLocalHostImage=moviesUrl+"/util/queryLocalHostImage";
-/*var queryMenuEvaluateDetail=moviesUrl+"/menuEvaluateBackground/queryMenuEvaluateDetail";
-var updateMenuEvaluate=moviesUrl+"/menuEvaluateBackground/updateMenuEvaluate";*/
-var deleteUserById=moviesUrl+"/account/deleteUserById";
-var user=localStorage.getItem("BackgroundToken");
+var queryMenuEvaluateDetail=moviesUrl+"/weatherInfo/findWeatherInfo";
+var updateMenuEvaluate=moviesUrl+"/weatherInfo/updateWeatherInfo";
 
+var user=localStorage.getItem("BackgroundToken");
+var insertWeatherInfoDO=moviesUrl+"/weatherInfo/insertWeatherInfoDO";
 
 layui.use('table', function()
 {
     var table = layui.table;
     table.render({
-        id:'userAccount',
+        id:'menuEvaluatePage',
         elem: '#table-menu-data',
         url:queryPageByCondition,
         method:'POST',
@@ -33,22 +33,13 @@ layui.use('table', function()
         headers:{"BackgroundToken":user},
         cols: [[
             {field:'id', width:100, title: 'ID', sort: false},
-            {field:'username', width:180, title: '用户账号'},
-            {field:'nickname', width:200, title: '用户昵称'},
-            {field:'systemLevel', width:100, title: '系统权限', templet:function (data) {
-                    var value=null;
-                    if(data.systemLevel==1){
-                        value="管理员";
-                    }
-                    if(data.systemLevel==2){
-                        value="管理员";
-                    }
-                    return  value
-                }},
-            {field:'isLock', width:100, title: '是否锁定', templet:function (data) {
-                    var  value= data.isLock!=null?data.isDelete==1?"是":"否":"否";
-                    return  value
-                }},
+            {field:'location', width:180, title: '城市'},
+            {field:'tz', width:100, title: '所在时区'},
+            {field:'fl', width:100, title: '温度'},
+            {field:'tmp', width:100, title: '摄氏度'},
+            {field:'condTxt', width:100, title: '实况天气状况描述'},
+            {field:'windDeg', width:100, title: '风向360角度'},
+            {field:'windDir', width:100, title: '风向'},
             {field:'isDelete', width:100, title: '是否删除', templet:function (data) {
                     var  value= data.isDelete!=null?data.isDelete==1?"是":"否":"否";
                     return  value
@@ -73,9 +64,9 @@ layui.use('table', function()
 
     table.on('tool(demo)', function(obj){
         var data = obj.data;
-        /*if(obj.event === 'detail'){
+        if(obj.event === 'detail'){
             queryId(data.id);
-        }*/
+        }
         if (obj.event === 'delete'){
             deleteMenu(data.id);
         }
@@ -92,10 +83,10 @@ layui.use('table', function()
             if (orderId) {
                 var index = layer.msg('查询中，请稍候...',{icon: 16,time:false,shade:0});
                 setTimeout(function(){
-                    table.reload('userAccount', { //表格的id
+                    table.reload('menuEvaluatePage', { //表格的id
                         url:queryPageByCondition,
                         where: {
-                            'search':$.trim(orderId)
+                            'location':$.trim(orderId)
                         }
                     });
                     layer.close(index);
@@ -105,6 +96,7 @@ layui.use('table', function()
             }
         },
     };
+
     //监听回车事件,扫描枪一扫描或者按下回车键就直接执行查询
     $("#select_orderId").bind("keyup", function (e) {
         if (e.keyCode == 13) {
@@ -112,15 +104,18 @@ layui.use('table', function()
             active[type] ? active[type].call(this) : '';
         }
     });
+
+
 });
 
 
 function deleteMenu(ids) {
     var  deleteData={"id":ids,"isDelete":1};
     $.ajax({
-        url:deleteUserById,
+        url:updateMenuEvaluate,
         type:"POST",
-        data:deleteData,
+        contentType:"application/json",
+        data:JSON.stringify(deleteData),
         dataType:"json",
         headers: {
             "BackgroundToken" : user
@@ -138,20 +133,21 @@ function deleteMenu(ids) {
 };
 
 
-/*function  queryId(ids) {
+function  queryId(ids) {
     var  id={id:ids};
     $.ajax({
         url:queryMenuEvaluateDetail,
         type:"POST",
-        data:id,
+        contentType: 'application/json' ,
+        data:JSON.stringify(id),
         dataType:"json",
         timeout:3000,
         success:function (data) {
             if (data.code==200){
                 if (data.data!=null){
                     //sessionStorage.setItem("menuData",data.data);
-                    localStorage.setItem("menuEvaluateDetail",JSON.stringify(data.data));
-                    window.location.href="../background/updateMenuEvaluate.html";
+                    localStorage.setItem("weatherData",JSON.stringify(data.data));
+                    window.location.href="../background/updateWeatherinfo.html";
                 }else {
                     alert(data.msg);
                 }
@@ -160,17 +156,78 @@ function deleteMenu(ids) {
             }
         }
     })
-}*/
+}
+
+
+
+
+
+function insertWeatherInfoFunction() {
+    let  location=$("#reload").val();
+
+    let requestData={"location":location};
+    $.ajax({
+        url:insertWeatherInfoDO,
+        type:"POST",
+        headers: {
+            "BackgroundToken" : user
+        },
+        contentType:"application/json",
+        data:JSON.stringify(requestData),
+        dataType:"json",
+        timeout:3000,
+        success:function (data,status,request) {
+            if (data.code==200){
+                window.location.reload();
+                alert("抓取成功!");
+            }else {
+                alert(data.msg);
+            }
+        }
+    })
+
+    
+}
 
 
 
 
 
 
+function updateMenu() {
+
+    let id=$("#id").val();
+   let location=$("#location").val();
+   let fl=  $("#fl").val();
+   let tmp=$("#tmp").val();
+   let condTxt=$("#condTxt").val();
+   let windDeg=$("#windDeg").val();
+   let windDir=$("#windDir").val();
 
 
-
-
+    let requestData={"location":location,"fl":fl,
+        "tmp":tmp,"condTxt":condTxt,
+        "condTxt":condTxt,"windDeg":windDeg,
+        "windDir":windDir,"id":id};
+    $.ajax({
+        url:updateMenuEvaluate,
+        type:"POST",
+        headers: {
+            "BackgroundToken" : user
+        },
+        contentType:"application/json",
+        data:JSON.stringify(requestData),
+        dataType:"json",
+        timeout:3000,
+        success:function (data,status,request) {
+            if (data.code==200){
+                alert("修改成功");
+            }else {
+                alert(data.msg);
+            }
+        }
+    })
+}
 
 
 
