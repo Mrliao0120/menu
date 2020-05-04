@@ -10,11 +10,28 @@
     <script src="layui/layui.js"></script>
    <script src="wbjs/menuIndex.js"></script>
     <link rel="stylesheet" href="wbjs/banner.css">
-
+    <style>
+        .search .in{
+            width:454px;
+            height:30px;
+            border:2px solid #007DDB;
+            outline:none;
+            font:14px/30px "microsoft yahei";
+        }
+        .search .btn_search{
+            background:#007DDB;
+            width:80px;
+            height:34px;
+            color:white;
+            border:none;
+            outline:none;
+            font:14px/34px "microsoft yahei";
+        }
+    </style>
 </head>
 <body>
-<div class="layui-btn" style="width: 200px;height: 150px; ">
-     <input class="layui-input"><button type="button" class="layui-btn layui-btn-normal">搜索</button></input>
+<div class="search" style="text-align: center;height: 150px;position: relative;top: 50px;">
+    <input type="text" class="in" value="" /><button class="btn_search">搜索</button>
 </div>
 
 
