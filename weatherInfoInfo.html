@@ -74,8 +74,8 @@
 
 <script>
     $(document).ready(function(){
-    var user=localStorage.getItem("weatherData");
-    var  datas=JSON.parse(user);
+        var data2=localStorage.getItem("weatherData");
+        var  datas=JSON.parse(data2);
     if(datas!=null){
         var htmls="<td>"+datas.location+"</td><td>"+datas.fl+"</td><td>"+formatDate(datas.gmtGreate)+"</td><td>"+datas.tmp+"</td>";
         $("#weatherInfo").html(htmls);
