@@ -16,7 +16,7 @@ function findWeather(){
         success:function (data) {
             if (data.code==200){
                 if (data.data!=null){
-                    localStorage.setItem("weatherData",data.data);
+                    localStorage.setItem("weatherInfoData",JSON.stringify(data.data));
                     window.location.href="weatherInfoInfo.html";
                 }else {
                     alert(data.msg);

@@ -74,10 +74,10 @@
 
 <script>
     $(document).ready(function(){
-        var data2=localStorage.getItem("weatherData");
+        var data2=localStorage.getItem("weatherInfoData");
         var  datas=JSON.parse(data2);
     if(datas!=null){
-        var htmls="<td>"+datas.location+"</td><td>"+datas.fl+"</td><td>"+formatDate(datas.gmtGreate)+"</td><td>"+datas.tmp+"</td>";
+        var htmls="<td>"+datas.location+"</td><td>"+datas.fl+"</td><td>"+formatDate(datas.gmtGreate)+"</td><td>"+datas.tmp+"度</td>";
         $("#weatherInfo").html(htmls);
     }
     });
